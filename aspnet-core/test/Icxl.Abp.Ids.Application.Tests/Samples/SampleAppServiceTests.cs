@@ -50,7 +50,7 @@ namespace Icxl.Abp.Ids.Samples
             listNode.Add(node);
             var createDto = new ChurchSettingCreateOrEditDto()
             {
-                Id = id, ChurchSettingName = "isVip", Enable = true, ProviderName = "U", ProviderKey = "123456",
+                Id = id, ChurchSettingName = "isVip", Enable = false, ProviderName = "U", ProviderKey = "123456",
                 ChurchSettingNodes = listNode
             };
             await _churchSettingAppService.CreateAsync(createDto);
@@ -74,11 +74,31 @@ namespace Icxl.Abp.Ids.Samples
             await _churchSettingAppService.CreateAsync(createDto);
             return id;
         }
+        
+        private async Task<Guid> insert3()
+        {
+            Guid id = Guid.NewGuid();
+            List<ChurchSettingNodeCreateOrEditDto> listNode = new List<ChurchSettingNodeCreateOrEditDto>();
+            ChurchSettingNodeCreateOrEditDto node = new ChurchSettingNodeCreateOrEditDto()
+            {
+                ChurchSettingId = id,
+                Value = "global"
+            };
+            listNode.Add(node);
+            var createDto = new ChurchSettingCreateOrEditDto()
+            {
+                Id = id, ChurchSettingName = "isVip", Enable = true, ProviderName = "G", ProviderKey = "10000",
+                ChurchSettingNodes = listNode
+            };
+            await _churchSettingAppService.CreateAsync(createDto);
+            return id;
+        }
         [Fact]
         public async Task Test_ChurchSetting()
         {
             var id1 = await insert();
             var id2 = await insert2();
+            var id3 = await insert3();
             var dto = await _churchSettingAppService.GetForEdit(id2);
             var provider = await _churchSettingAppService.GetByProvider(new GetChurchSettingDto()
             {
