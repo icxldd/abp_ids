@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Icxl.Abp.ChurchSetting.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using Volo.Abp.AuditLogging.EntityFrameworkCore;
 using Volo.Abp.BackgroundJobs.EntityFrameworkCore;
 using Volo.Abp.EntityFrameworkCore;
@@ -43,6 +44,7 @@ namespace Icxl.Abp.Ids.EntityFrameworkCore
             /* Configure your own tables/entities inside the ConfigureIds method */
 
             builder.ConfigureIds();
+            builder.ConfigureChurchSetting();
         }
     }
 }

@@ -5,11 +5,12 @@ using Volo.Abp.Domain.Entities.Auditing;
 
 namespace Icxl.Abp.ChurchSetting.Domain
 {
-    public class ChurchSetting: FullAuditedAggregateRoot<Guid>
+    public class ChurchSetting : FullAuditedAggregateRoot<Guid>
     {
         protected ChurchSetting()
         {
         }
+
         public ChurchSetting(
             [NotNull] string churchSettingName,
             bool enable,
@@ -23,18 +24,18 @@ namespace Icxl.Abp.ChurchSetting.Domain
             ProviderKey = providerKey;
             ChurchSettingNodes = churchSettingNodes ?? new List<ChurchSettingNode>();
         }
-        
-        [NotNull] public virtual string ChurchSettingName { get; protected set; }
-        
-        public virtual bool Enable { get; protected set; }
-        
-        [NotNull] public virtual string ProviderName { get; protected set; }
-        
-        [CanBeNull] public virtual string ProviderKey { get; protected set; }
-        
+
+        [NotNull] public string ChurchSettingName { get; set; }
+
+        public bool Enable { get; set; }
+
+        [NotNull] public string ProviderName { get; set; }
+
+        [CanBeNull] public string ProviderKey { get; set; }
+
+        //一共有多少条    值
         public int NodesMaxIndex { get; set; }
-        
-        public virtual ICollection<ChurchSettingNode> ChurchSettingNodes { get; protected set; }
-        
+
+        public virtual ICollection<ChurchSettingNode> ChurchSettingNodes { get; set; }
     }
 }

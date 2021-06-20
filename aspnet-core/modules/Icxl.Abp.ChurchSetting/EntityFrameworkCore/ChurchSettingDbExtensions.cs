@@ -9,8 +9,6 @@ namespace Icxl.Abp.ChurchSetting.EntityFrameworkCore
     {
         public static void ConfigureChurchSetting(this ModelBuilder builder)
         {
-            Check.NotNull(builder, nameof(builder));
-            
             builder.Entity<Domain.ChurchSetting>(b =>
             {
                 b.ToTable(ChurchSettingConsts.DbTablePrefix + "ChurchSetting", ChurchSettingConsts.DbSchema);
@@ -25,7 +23,7 @@ namespace Icxl.Abp.ChurchSetting.EntityFrameworkCore
 
             builder.Entity<ChurchSettingNode>(b =>
             {
-                b.ToTable(ChurchSettingConsts.DbTablePrefix + "ChurchSettingNodes", ChurchSettingConsts.DbSchema);
+                b.ToTable(ChurchSettingConsts.DbTablePrefix + "ChurchSettingNode", ChurchSettingConsts.DbSchema);
                 b.ConfigureCreationAudited();
 
                 b.Property(x => x.Desc).HasMaxLength(ChurchSettingConsts.ShortDescLenght);

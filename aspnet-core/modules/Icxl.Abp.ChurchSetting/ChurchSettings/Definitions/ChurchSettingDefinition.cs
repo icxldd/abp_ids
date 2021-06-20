@@ -6,10 +6,7 @@ namespace Icxl.Abp.ChurchSetting.ChurchSettings.Definitions
 {
     public class ChurchSettingDefinition
     {
-        public string Name { get; set; }
-
-        public Guid? DefaultValue { get; set; }
-
+        public string DefinitionName { get; set; }
         public List<string> Providers { get; set; }
 
         private ILocalizableString _displayName;
@@ -19,9 +16,9 @@ namespace Icxl.Abp.ChurchSetting.ChurchSettings.Definitions
             get => _displayName;
             set => _displayName = value;
         }
-        public ChurchSettingDefinition(string name, ILocalizableString displayName = null)
+        public ChurchSettingDefinition(string definitionName, ILocalizableString displayName = null)
         {
-            Name = name;
+            DefinitionName = definitionName;
             DisplayName = displayName;
             Providers = new List<string>();
         }

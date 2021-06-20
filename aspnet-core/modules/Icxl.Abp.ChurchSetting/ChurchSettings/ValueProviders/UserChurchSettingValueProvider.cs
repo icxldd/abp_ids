@@ -17,7 +17,7 @@ namespace Icxl.Abp.ChurchSetting.ChurchSettings.ValueProviders
 
         public override string ProviderName => "U";
 
-        public override async Task<Guid?> GetOrNullAsync(ChurchSettingDefinition churchSetting)
+        public override async Task<Guid?> GetOrNullAsync(string churchSettingName)
         {
             if (_currentChurch.UserId == null)
             {
@@ -26,7 +26,7 @@ namespace Icxl.Abp.ChurchSetting.ChurchSettings.ValueProviders
 
             var dbEntity = await ChurchSettingRepository
                 .FirstOrDefaultAsync(x =>
-                    x.ChurchSettingName == churchSetting.Name &&
+                    x.ChurchSettingName == churchSettingName &&
                     x.ProviderName == ProviderName &&
                     x.ProviderKey == _currentChurch.UserId
                     && x.Enable);

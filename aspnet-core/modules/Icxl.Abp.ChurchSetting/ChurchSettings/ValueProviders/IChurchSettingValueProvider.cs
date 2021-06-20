@@ -12,6 +12,11 @@ namespace Icxl.Abp.ChurchSetting.ChurchSettings.ValueProviders
     {
         string ProviderName { get; }
 
-        Task<Guid?> GetOrNullAsync([NotNull] ChurchSettingDefinition churchSetting);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="churchSettingName"></param>
+        /// <returns></returns>
+        Task<Guid?> GetOrNullAsync([NotNull] string churchSettingName);
     }
 }

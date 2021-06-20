@@ -10,16 +10,18 @@ namespace Icxl.Abp.ChurchSetting.Application
 {
     public class ChurchSettingRequestInput
     {
-        public string Name { get; set; }
+        public string DefinitionName { get; set; }
 
-        public string ProviderName { get; set; }
+        public string ChurchSettingName { get; set; }
     }
+
     public interface IChurchSettingManagementAppService : IApplicationService
     {
         Task<IReadOnlyList<ChurchSettingDefinition>> GetAllDefineAsync();
         Task<Guid?> GetAsync(ChurchSettingRequestInput input);
     }
-    public class ChurchSettingManagementAppService:
+
+    public class ChurchSettingManagementAppService :
         ApplicationService,
         IChurchSettingManagementAppService
     {
@@ -42,7 +44,7 @@ namespace Icxl.Abp.ChurchSetting.Application
 
         public async Task<Guid?> GetAsync(ChurchSettingRequestInput input)
         {
-            return await _ChurchSettingProvider.GetOrNullAsync(input.Name);
+            return await _ChurchSettingProvider.GetOrNullAsync(input.DefinitionName, input.ChurchSettingName);
         }
     }
 }

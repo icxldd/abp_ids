@@ -19,6 +19,6 @@ namespace Icxl.Abp.ChurchSetting.ChurchSettings.ValueProviders
             ChurchSettingRepository = churchSettingRepository;
         }
 
-        public abstract Task<Guid?> GetOrNullAsync(ChurchSettingDefinition churchSetting);
+        public abstract Task<Guid?> GetOrNullAsync(string churchSettingName);
     }
 }

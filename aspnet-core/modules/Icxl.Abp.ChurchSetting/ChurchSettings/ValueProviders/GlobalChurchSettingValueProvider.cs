@@ -17,12 +17,12 @@ namespace Icxl.Abp.ChurchSetting.ChurchSettings.ValueProviders
         public override string ProviderName => "G";
 
 
-        public override async Task<Guid?> GetOrNullAsync(ChurchSettingDefinition churchSetting)
+        public override async Task<Guid?> GetOrNullAsync(string churchSettingName)
         {
             var dbEntity = await ChurchSettingRepository
                 .FirstOrDefaultAsync(x =>
                     x.ProviderName == ProviderName
-                    && x.ChurchSettingName == churchSetting.Name
+                    && x.ChurchSettingName == churchSettingName
                     && x.Enable);
 
             return dbEntity?.Id;

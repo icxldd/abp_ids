@@ -31,7 +31,7 @@ namespace Icxl.Abp.ChurchSetting.ChurchSettings.Definitions
 
             foreach (var definition in definitions)
             {
-                ChurchSettings[definition.Name] = definition;
+                ChurchSettings[definition.DefinitionName] = definition;
             }
         }
     }

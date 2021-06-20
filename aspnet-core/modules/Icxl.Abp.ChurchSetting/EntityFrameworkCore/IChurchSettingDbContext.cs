@@ -8,7 +8,7 @@ namespace Icxl.Abp.ChurchSetting.EntityFrameworkCore
     [ConnectionStringName("ChurchSetting")]
     public interface IChurchSettingDbContext: IEfCoreDbContext
     {
-        DbSet<Domain.ChurchSetting> ChurchSettings { get; set; }
-        DbSet<ChurchSettingNode> ChurchSettingNodes { get; set; }
+        public DbSet<Domain.ChurchSetting> ChurchSettings { get; set; }
+        public DbSet<ChurchSettingNode> ChurchSettingNodes { get; set; }
     }
 }

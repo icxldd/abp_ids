@@ -8,8 +8,8 @@ namespace Icxl.Abp.ChurchSetting.ChurchSettings.Providers
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="name">定义的name</param>
+        /// <param name="definitionName">定义的name</param>
         /// <returns></returns>
-        Task<Guid?> GetOrNullAsync(string name);
+        Task<Guid?> GetOrNullAsync(string definitionName, string churchSettingName);
     }
 }

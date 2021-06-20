@@ -54,7 +54,6 @@ namespace Icxl.Abp.Ids.EntityFrameworkCore
             /* Configure your own tables/entities inside the ConfigureIds method */
 
             builder.ConfigureIds();
-            builder.ConfigureChurchSetting();
         }
     }
 }

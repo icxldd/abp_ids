@@ -5,13 +5,12 @@ using Volo.Abp.EntityFrameworkCore;
 
 namespace Icxl.Abp.ChurchSetting.EntityFrameworkCore
 {
-    [ConnectionStringName("ChurchSetting")]
     public class ChurchSettingDbContext :
         AbpDbContext<ChurchSettingDbContext>,
         IChurchSettingDbContext
     {
-        public virtual DbSet<Domain.ChurchSetting> ChurchSettings { get; set; }
-        public virtual DbSet<ChurchSettingNode> ChurchSettingNodes { get; set; }
+        public DbSet<Domain.ChurchSetting> ChurchSettings { get; set; }
+        public DbSet<ChurchSettingNode> ChurchSettingNodes { get; set; }
 
         public ChurchSettingDbContext(
             DbContextOptions<ChurchSettingDbContext> options
