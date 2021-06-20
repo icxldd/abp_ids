@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Icxl.Abp.ChurchSetting;
+using Microsoft.Extensions.DependencyInjection;
 using Volo.Abp.AuditLogging.EntityFrameworkCore;
 using Volo.Abp.BackgroundJobs.EntityFrameworkCore;
 using Volo.Abp.EntityFrameworkCore;
@@ -23,7 +24,8 @@ namespace Icxl.Abp.Ids.EntityFrameworkCore
         typeof(AbpBackgroundJobsEntityFrameworkCoreModule),
         typeof(AbpAuditLoggingEntityFrameworkCoreModule),
         typeof(AbpTenantManagementEntityFrameworkCoreModule),
-        typeof(AbpFeatureManagementEntityFrameworkCoreModule)
+        typeof(AbpFeatureManagementEntityFrameworkCoreModule),
+        typeof(ChurchSettingModule)
         )]
     public class IdsEntityFrameworkCoreModule : AbpModule
     {

@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net5.0</TargetFramework>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\share\Icxl.Abp.Share\Icxl.Abp.Share.csproj" />
+      <ProjectReference Include="..\..\src\Icxl.Abp.Ids.Domain.Shared\Icxl.Abp.Ids.Domain.Shared.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <Content Remove="Localization\*\*.json" />
+        <EmbeddedResource Include="Localization\*\*.json" >
+            <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+            <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+        </EmbeddedResource>
+    </ItemGroup>
+</Project>
