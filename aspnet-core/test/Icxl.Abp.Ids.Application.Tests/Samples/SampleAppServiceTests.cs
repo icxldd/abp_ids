@@ -50,7 +50,7 @@ namespace Icxl.Abp.Ids.Samples
             listNode.Add(node);
             var createDto = new ChurchSettingCreateOrEditDto()
             {
-                Id = id, ChurchSettingName = "isVip", Enable = false, ProviderName = "U", ProviderKey = "123456",
+                Id = id, ChurchSettingName = "isVip", Enable = true, ProviderName = "U", ProviderKey = "123456",
                 ChurchSettingNodes = listNode
             };
             await _churchSettingAppService.CreateAsync(createDto);
@@ -68,7 +68,7 @@ namespace Icxl.Abp.Ids.Samples
             listNode.Add(node);
             var createDto = new ChurchSettingCreateOrEditDto()
             {
-                Id = id, ChurchSettingName = "isVip", Enable = false, ProviderName = "Guild", ProviderKey = "10000",
+                Id = id, ChurchSettingName = "isVip", Enable = true, ProviderName = "Guild", ProviderKey = "10000",
                 ChurchSettingNodes = listNode
             };
             await _churchSettingAppService.CreateAsync(createDto);

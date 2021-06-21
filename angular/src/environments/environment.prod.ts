@@ -6,7 +6,7 @@ export const environment = {
   production: true,
   application: {
     baseUrl,
-    name: 'Ids',
+    name: '云教会',
     logoUrl: '',
   },
   oAuthConfig: {

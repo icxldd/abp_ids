@@ -2,6 +2,7 @@
   "culture": "en",
   "texts": {
     "test": "cccc",
-    "ChurchSetting_Test": "setting_test"
+    "ChurchSetting_Test": "setting_test",
+    "Menu:Setting": "Setting"
   }
 }

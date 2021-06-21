@@ -2,6 +2,7 @@
   "culture": "zh-Hans",
   "texts": {
     "test": "测试",
-    "ChurchSetting_Test": "设置测试"
+    "ChurchSetting_Test": "设置测试",
+    "Menu:Setting": "设置管理"
   }
 }

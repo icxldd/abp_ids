@@ -1,7 +1,7 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "version": 1,
-  "newProjectRoot": "projects",
+  "newProjectRoot": "modules",
   "projects": {
     "Ids": {
       "projectType": "application",
@@ -149,6 +149,45 @@
             "production": {
               "devServerTarget": "Ids:serve:production"
             }
+          }
+        }
+      }
+    },
+    "bloc": {
+      "projectType": "library",
+      "root": "modules/icxl-bloc",
+      "sourceRoot": "modules/icxl-bloc/src",
+      "prefix": "abp",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "modules/icxl-bloc/tsconfig.lib.json",
+            "project": "modules/icxl-bloc/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "modules/icxl-bloc/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-builders/jest:run",
+          "options": {
+            "coverage": true,
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "modules/icxl-bloc/tsconfig.lib.json",
+              "modules/icxl-bloc/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
           }
         }
       }
