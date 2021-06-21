@@ -10,6 +10,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BlocConfigModule } from '@app/bloc/config';
+import { SettingConfigModule } from '@app/setting/config';
 import { NgxsModule } from '@ngxs/store';
 import { environment } from '../environments/environment';
 import { AppRoutingModule } from './app-routing.module';
@@ -33,6 +34,7 @@ import { APP_ROUTE_PROVIDER } from './route.provider';
     NgxsModule.forRoot(),
     ThemeBasicModule.forRoot(),
     BlocConfigModule.forRoot(),
+    SettingConfigModule.forRoot()
   ],
   declarations: [AppComponent],
   providers: [APP_ROUTE_PROVIDER],

@@ -191,6 +191,45 @@
           }
         }
       }
+    },
+    "setting": {
+      "projectType": "library",
+      "root": "modules/church-setting",
+      "sourceRoot": "modules/church-setting/src",
+      "prefix": "abp",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "modules/church-setting/tsconfig.lib.json",
+            "project": "modules/church-setting/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "modules/church-setting/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-builders/jest:run",
+          "options": {
+            "coverage": true,
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "modules/church-setting/tsconfig.lib.json",
+              "modules/church-setting/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }
   },
   "defaultProject": "Ids",

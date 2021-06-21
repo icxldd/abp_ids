@@ -30,6 +30,11 @@ const routes: Routes = [
     loadChildren: () =>
       import('@app/bloc').then(m => m.BlocModule.forLazy(/* options here */)),
   },
+  {
+    path: 'setting',
+    loadChildren: () =>
+      import('@app/setting').then(m => m.SettingModule.forLazy(/* options here */)),
+  }
 ];
 
 @NgModule({

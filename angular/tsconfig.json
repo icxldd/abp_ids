@@ -22,6 +22,12 @@
       "@app/bloc/config": [
         "modules/icxl-bloc/config/src/public-api.ts"
       ],
+      "@app/setting": [
+        "modules/church-setting/src/public-api.ts"
+      ],
+      "@app/setting/config": [
+        "modules/church-setting/config/src/public-api.ts"
+      ],
     }
   },
   "angularCompilerOptions": {

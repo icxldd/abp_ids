@@ -1,3 +1,3 @@
 export const enum eBlocRouteNames {
-  Bloc = 'Setting::Menu:Setting'
+  Bloc = 'Setting::test'
 }
