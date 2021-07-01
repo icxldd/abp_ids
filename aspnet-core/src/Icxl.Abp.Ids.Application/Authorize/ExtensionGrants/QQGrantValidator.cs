@@ -32,32 +32,31 @@ namespace Icxl.Abp.Ids.Authorize.ExtensionGrants
         {
             var qq = context.Request.Raw.Get("qq");
             var sex = Enum.Parse<IdsAuthConst.ESex>(context.Request.Raw.Get("sex"));
-            {
-                var result = (await _appUserRepository.GetListAsync(x => x.QQ == qq));
+            string name = context.Request.Raw.Get("name") ?? $"{new Random().Next(1000000).GetHashCode()}";
+            var result = (await _appUserRepository.GetListAsync(x => x.QQ == qq));
 
-                if (result.Count > 0)
+            if (result.Count > 0)
+            {
+                AppUser user = result[0];
+                context.Result = new GrantValidationResult(
+                    subject: user.Id.ToString(),
+                    authenticationMethod: ExtensionGrantTypes.QQGrantType,
+                    claims: null);
+            }
+            //注册
+            else
+            {
+                Guid newGuid = _guild.Create();
+                string
+                    email = $"{new Random().Next(1000000).GetHashCode()}@qq.com";
+
+                var inputEntity = new AppUser(newGuid, email, name, qq, (int) sex);
+                await _appUserRepository.InsertAsync(inputEntity, true);
                 {
-                    AppUser user = result[0];
                     context.Result = new GrantValidationResult(
-                        subject: user.Id.ToString(),
+                        subject: newGuid.ToString(),
                         authenticationMethod: ExtensionGrantTypes.QQGrantType,
                         claims: null);
-                }
-                //注册
-                else
-                {
-                    Guid newGuid = _guild.Create();
-                    string name = $"{new Random().Next(1000000).GetHashCode()}",
-                        email = $"{new Random().Next(1000000).GetHashCode()}@qq.com";
-
-                    var inputEntity = new AppUser(newGuid, email, name, qq, (int) sex);
-                    await _appUserRepository.InsertAsync(inputEntity, true);
-                    {
-                        context.Result = new GrantValidationResult(
-                            subject: newGuid.ToString(),
-                            authenticationMethod: ExtensionGrantTypes.QQGrantType,
-                            claims: null);
-                    }
                 }
             }
         }

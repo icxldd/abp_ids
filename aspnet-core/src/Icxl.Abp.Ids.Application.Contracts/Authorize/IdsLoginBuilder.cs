@@ -16,7 +16,7 @@
         }
 
 
-        public static object BuilberQQLogin(string qq, IdsAuthConst.ESex sex)
+        public static object BuilberQQLogin(string qq, IdsAuthConst.ESex sex,string name)
         {
             return new
             {
@@ -25,7 +25,8 @@
                 client_id = IdsLoginConst.QQ_LOGIN_CLIENT_ID,
                 client_secret = IdsLoginConst.QQ_LOGIN_CLIENT_SECRET,
                 qq = qq,
-                sex = sex
+                sex = sex,
+                name = name
             };
         }
     }
