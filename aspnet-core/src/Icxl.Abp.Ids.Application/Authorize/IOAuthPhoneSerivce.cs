@@ -2,8 +2,7 @@
 
 namespace Icxl.Abp.Ids.Authorize
 {
-    
-    public interface IOAuthPhoneSerivce
+    public interface IOAuthPhoneSerivce:IOAuthSerivce
     {
         /// <summary>
         /// 手机号验证码登陆 

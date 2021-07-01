@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Icxl.Abp.Ids.Users;
+using Microsoft.EntityFrameworkCore;
 using Volo.Abp.Identity;
 using Volo.Abp.ObjectExtending;
 using Volo.Abp.Threading;
@@ -16,6 +17,20 @@ namespace Icxl.Abp.Ids.EntityFrameworkCore
 
             OneTimeRunner.Run(() =>
             {
+                ObjectExtensionManager.Instance
+                    .MapEfCoreProperty<IdentityUser, string>(
+                        nameof(AppUser.QQ),
+                        b => { b.HasMaxLength(AppUserConsts.MaxQQLength); }
+                    )
+                    .MapEfCoreProperty<IdentityUser, int>(
+                        nameof(AppUser.Sex),
+                        b =>
+                        {
+                            b.HasMaxLength(AppUserConsts.MaxSexLength);
+                            b.HasDefaultValue(1);
+                        }
+                    );
+
                 /* You can configure extra properties for the
                  * entities defined in the modules used by your application.
                  *

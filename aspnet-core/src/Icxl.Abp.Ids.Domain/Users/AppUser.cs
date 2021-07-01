@@ -4,6 +4,13 @@ using Volo.Abp.Users;
 
 namespace Icxl.Abp.Ids.Users
 {
+    public interface IChurchUser : IUser
+    {
+        public int Sex { get; set; }
+
+        public string QQ { get; set; }
+    }
+
     /* This entity shares the same table/collection ("AbpUsers" by default) with the
      * IdentityUser entity of the Identity module.
      *
@@ -12,7 +19,7 @@ namespace Icxl.Abp.Ids.Users
      * - You can query users from database with this entity.
      * - You can update values of your custom properties.
      */
-    public class AppUser : FullAuditedAggregateRoot<Guid>, IUser
+    public class AppUser : FullAuditedAggregateRoot<Guid>, IChurchUser
     {
         #region Base properties
 
@@ -37,7 +44,11 @@ namespace Icxl.Abp.Ids.Users
         public virtual string PhoneNumber { get; private set; }
 
         public virtual bool PhoneNumberConfirmed { get; private set; }
-
+        public virtual string NormalizedUserName { get; private set; }
+        public virtual string NormalizedEmail { get; private set; }
+        public virtual string SecurityStamp { get; private set; }
+        
+        
         #endregion
 
         /* Add your own properties here. Example:
@@ -55,9 +66,25 @@ namespace Icxl.Abp.Ids.Users
          * schema change to the database.
          */
 
-        private AppUser()
+        public int Sex { get; set; }
+
+        public string QQ { get; set; }
+
+        public AppUser()
         {
-            
+        }
+
+        public AppUser(Guid id, string email, string name, string qq, int sex = 1)
+        {
+            this.Id = id;
+            this.Email = email;
+            this.Name = name;
+            this.UserName = name;
+            this.NormalizedUserName = name;
+            this.NormalizedEmail = email;
+            this.QQ = qq;
+            this.Sex = sex;
+            this.SecurityStamp = Guid.NewGuid().ToString();
         }
     }
 }

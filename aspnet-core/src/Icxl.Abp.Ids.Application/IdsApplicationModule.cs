@@ -1,4 +1,5 @@
 ﻿using Icxl.Abp.Ids.Authorize;
+using Icxl.Abp.Ids.Authorize.ExtensionGrants;
 using Microsoft.Extensions.DependencyInjection;
 using Volo.Abp.Account;
 using Volo.Abp.AutoMapper;
@@ -25,7 +26,7 @@ namespace Icxl.Abp.Ids
     {
         public override void ConfigureServices(ServiceConfigurationContext context)
         {
-            context.Services.AddIdentityServerBuilder().AddExtensionGrantValidator<SMSGrantValidator>();
+            context.Services.AddIdentityServerBuilder().AddExtensionGrantValidator<SmsGrantValidator>().AddExtensionGrantValidator<QQGrantValidator>();
             Configure<AbpAutoMapperOptions>(options => { options.AddMaps<IdsApplicationModule>(); });
         }
     }

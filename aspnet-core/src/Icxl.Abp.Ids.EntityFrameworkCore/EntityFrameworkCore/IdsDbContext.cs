@@ -45,7 +45,8 @@ namespace Icxl.Abp.Ids.EntityFrameworkCore
                 
                 b.ConfigureByConvention();
                 b.ConfigureAbpUser();
-
+                b.Property(x => x.QQ).IsRequired(false).HasMaxLength(AppUserConsts.MaxQQLength).HasColumnName(nameof(AppUser.QQ));
+                b.Property(x => x.Sex).HasDefaultValue(1).IsRequired().HasMaxLength(AppUserConsts.MaxQQLength).HasColumnName(nameof(AppUser.Sex));
                 /* Configure mappings for your additional properties
                  * Also see the IdsEfCoreEntityExtensionMappings class
                  */

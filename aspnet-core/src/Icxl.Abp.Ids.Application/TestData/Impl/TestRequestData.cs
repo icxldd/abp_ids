@@ -6,7 +6,7 @@ using Icxl.Abp.Ids.Permissions;
 
 namespace Icxl.Abp.Ids.TestData.Impl
 {
-    [Authorize(IdsPermissions.MyPermission1)]
+    [Authorize]
     public class TestRequestData : IdsAppService, IRequestData
     {
         private readonly ICurrentPrincipalAccessor _currentPrincipalAccessor;

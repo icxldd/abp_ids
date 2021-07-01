@@ -190,6 +190,18 @@ namespace Icxl.Abp.Ids.IdentityServer
                     secret: (configurationSection["Test_App:ClientSecret"] ?? "1q2w3e*").Sha256()
                 );
             }
+            
+            
+            var testClientIdQQ = configurationSection["Test_App:ClientId"];
+            if (!testClientIdQQ.IsNullOrWhiteSpace())
+            {
+                await CreateClientAsync(
+                    name: testClientIdQQ,
+                    scopes: commonScopes,
+                    grantTypes: new[] {"password", "client_credentials", ExtensionGrantTypes.QQGrantType},
+                    secret: (configurationSection["Test_App:ClientSecret"] ?? "1q2w3e*").Sha256()
+                );
+            }
         }
 
         private async Task<Client> CreateClientAsync(

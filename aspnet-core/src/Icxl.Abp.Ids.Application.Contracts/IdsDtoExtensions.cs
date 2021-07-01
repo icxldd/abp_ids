@@ -12,6 +12,29 @@ namespace Icxl.Abp.Ids
         {
             OneTimeRunner.Run(() =>
             {
+                ObjectExtensionManager.Instance
+                    .AddOrUpdateProperty<string>(
+                        new[]
+                        {
+                            typeof(IdentityUserDto),
+                            typeof(IdentityUserCreateDto),
+                            typeof(IdentityUserUpdateDto),
+                            typeof(ProfileDto),
+                            typeof(UpdateProfileDto)
+                        },
+                        "QQ"
+                    )
+                    .AddOrUpdateProperty<string>(
+                        new[]
+                        {
+                            typeof(IdentityUserDto),
+                            typeof(IdentityUserCreateDto),
+                            typeof(IdentityUserUpdateDto),
+                            typeof(ProfileDto),
+                            typeof(UpdateProfileDto)
+                        },
+                        "Sex"
+                    );
                 /* You can add extension properties to DTOs
                  * defined in the depended modules.
                  *

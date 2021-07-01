@@ -1,24 +1,20 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Security.Claims;
 using System.Threading.Tasks;
 using IdentityServer4.Models;
 using IdentityServer4.Validation;
 using Volo.Abp.DependencyInjection;
-using Volo.Abp.Domain.Repositories;
 using Volo.Abp.Guids;
 using Volo.Abp.Identity;
-using Volo.Abp.Users;
 
-namespace Icxl.Abp.Ids.Authorize
+namespace Icxl.Abp.Ids.Authorize.ExtensionGrants
 {
-    public class SMSGrantValidator : IExtensionGrantValidator, ITransientDependency
+    public class SmsGrantValidator : IExtensionGrantValidator, ITransientDependency
     {
         private readonly IIdentityUserRepository _userRepository;
         private readonly IdentityUserManager _userManager;
         private readonly IGuidGenerator _guild;
 
-        public SMSGrantValidator(IIdentityUserRepository userRepository, IdentityUserManager userManager,
+        public SmsGrantValidator(IIdentityUserRepository userRepository, IdentityUserManager userManager,
             IGuidGenerator guild)
         {
             _userRepository = userRepository;
