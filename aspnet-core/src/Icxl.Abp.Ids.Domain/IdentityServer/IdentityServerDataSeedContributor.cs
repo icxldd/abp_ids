@@ -138,7 +138,8 @@ namespace Icxl.Abp.Ids.IdentityServer
                 "role",
                 "phone",
                 "address",
-                "Ids"
+                "Ids",
+                "offline_access"
             };
 
             var configurationSection = _configuration.GetSection("IdentityServer:Clients");
@@ -180,18 +181,18 @@ namespace Icxl.Abp.Ids.IdentityServer
                 );
             }
 
-            var testClientId = configurationSection["Test_App:ClientId"];
+            var testClientId = configurationSection["Test_App_Phone:ClientId"];
             if (!testClientId.IsNullOrWhiteSpace())
             {
                 await CreateClientAsync(
                     name: testClientId,
                     scopes: commonScopes,
-                    grantTypes: new[] {"password", "client_credentials", ExtensionGrantTypes.SMSGrantType},
-                    secret: (configurationSection["Test_App:ClientSecret"] ?? "1q2w3e*").Sha256()
+                    grantTypes: new[] {ExtensionGrantTypes.SMSGrantType},
+                    secret: (configurationSection["Test_App_Phone:ClientSecret"] ?? "1q2w3e*").Sha256()
                 );
             }
-            
-            
+
+
             var testClientIdQQ = configurationSection["Test_App:ClientId"];
             if (!testClientIdQQ.IsNullOrWhiteSpace())
             {
@@ -208,6 +209,7 @@ namespace Icxl.Abp.Ids.IdentityServer
             string name,
             IEnumerable<string> scopes,
             IEnumerable<string> grantTypes,
+            AccessTokenType tokenType = AccessTokenType.Jwt,
             string secret = null,
             string redirectUri = null,
             string postLogoutRedirectUri = null,
@@ -215,7 +217,8 @@ namespace Icxl.Abp.Ids.IdentityServer
             bool requireClientSecret = true,
             bool requirePkce = false,
             IEnumerable<string> permissions = null,
-            IEnumerable<string> corsOrigins = null)
+            IEnumerable<string> corsOrigins = null
+        )
         {
             var client = await _clientRepository.FindByClientIdAsync(name);
             if (client == null)
@@ -238,7 +241,8 @@ namespace Icxl.Abp.Ids.IdentityServer
                         RequireConsent = false,
                         FrontChannelLogoutUri = frontChannelLogoutUri,
                         RequireClientSecret = requireClientSecret,
-                        RequirePkce = requirePkce
+                        RequirePkce = requirePkce,
+                        AccessTokenType = (int) tokenType
                     },
                     autoSave: true
                 );
