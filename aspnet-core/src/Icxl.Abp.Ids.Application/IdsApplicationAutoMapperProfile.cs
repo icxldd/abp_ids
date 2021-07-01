@@ -1,4 +1,6 @@
 ﻿using AutoMapper;
+using Icxl.Abp.Ids.Authorize;
+using Icxl.Abp.Ids.Users;
 
 namespace Icxl.Abp.Ids
 {
@@ -9,6 +11,8 @@ namespace Icxl.Abp.Ids
             /* You can configure your AutoMapper mapping configuration here.
              * Alternatively, you can split your mapping configurations
              * into multiple profile classes for a better organization. */
+            
+            CreateMap<AppUser, AppUserDto>();
         }
     }
 }
